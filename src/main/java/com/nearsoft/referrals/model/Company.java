@@ -3,7 +3,7 @@ package com.nearsoft.referrals.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "job")
+@Table(name = "company")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

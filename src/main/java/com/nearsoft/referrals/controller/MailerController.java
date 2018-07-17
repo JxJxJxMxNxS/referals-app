@@ -52,11 +52,11 @@ public class MailerController {
             referBody.setStrong_referral_ago(strongReferralago.orElseThrow(() -> new MissingFormatArgumentException("strong_referral_ago should be present when the parameter string_referral is true")));
             referBody.setStrong_referral_where(strongReferralWhere.orElseThrow(() -> new MissingFormatArgumentException("strong_referral_where should be present when the parameter string_referral is true")));
             referBody.setStrong_referral_why(strongReferralWhy.orElseThrow(() -> new MissingFormatArgumentException("strong_referral_why should be present when the parameter string_referral is true")));
+            Company company = new Company();
+            company.setName(referBody.getStrong_referral_where());
+            companyService.storeCompanyIfNotExists(company);
         });
 
-        Company company = new Company();
-        company.setName(referBody.getStrong_referral_where());
-        companyService.storeCompanyIfNotExists(company);
 
         mailerService.sendEmail(referBody, fileName);
 
